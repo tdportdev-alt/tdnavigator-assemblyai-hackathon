@@ -2,8 +2,8 @@
 
 Tablet co-pilot for truck drivers. Hands-free voice under motion lock, built on the **AssemblyAI Voice Agent API**.
 
-**Live demo (judges):** https://tdnav.com/?demo=1  
-Simulated GPS/ELD/OBD (subtle status pills) — not a live fleet feed. Pick a corridor on `/demo`.
+**Live demo (judges):** https://tdnav.com  
+Start GPS + OBDLink under **System → Simulation** (`https://tdnav.com/system/simulation`). Subtle **Simulated** pills appear only while those streams run — not a live fleet feed.
 
 **Slogan:** Ears and mouth from AssemblyAI. Brains from TDNav.
 
@@ -16,7 +16,7 @@ Drivers already juggle maps, ELD/HOS, fuel, weather, and load details on a fixed
 | Layer | Role | Stack |
 |-------|------|--------|
 | **Ears + mouth + humanizer** | Listen, turn-taking, speak natural answers | AssemblyAI **Voice Agent API** (STT + managed LLM + TTS + tools) |
-| **Brains / engine** | Facts: load, HOS, fuel, nav, preferences | TDNav app engine (tools return JSON; live fuel via exchange when packs empty) |
+| **Brains / engine** | Facts: load, HOS, fuel, nav, preferences | TDNav app engine (tools return JSON; live fuel via exchange along sim GPS) |
 
 AssemblyAI does **not** invent truck truth. The Voice Agent calls tools, gets engine facts, then humanizes them for the driver.
 
@@ -24,29 +24,28 @@ AssemblyAI does **not** invent truck truth. The Voice Agent calls tools, gets en
 
 ## What judges should click (≤2 min)
 
-1. Open **https://tdnav.com/?demo=1** (landscape / tablet viewport if you can). Confirm subtle **GPS · Simulated** / **ELD · Simulated** / **OBD · Simulated** pills (no giant banner).
-2. Optional: open **Simulated routes** (`/demo`) and pick a corridor — the blue-dot follows that track.
-3. Confirm **one** orange **Navigator** hold-toggle at **top-left** (outer frame only).
-4. **Hold ~1 second** → glow / Connecting → **VOICE AGENT · LIVE** (+ on-screen $/hr meter).
-5. Ask (headset or mic):
-   - “What’s my load number?” → clear digits (e.g. **14598**)
+1. Open **https://tdnav.com/system/simulation** (or cockpit **System → Simulation**).
+2. **GPS → Start** a corridor (e.g. I-80 west of Lincoln) — loops until Stop.
+3. **OBDLink → Start** (Cascadia/DD13 DEMO) — confirm AT init log (ATZ → … → Mode 01).
+4. Return to the map/cockpit: subtle **GPS · Simulated** / **OBD · Simulated** pills only while those streams run.
+5. Confirm **one** orange **Navigator** hold-toggle at **top-left**.
+6. **Hold ~1 second** → **VOICE AGENT · LIVE**, then ask:
+   - “What’s my load number?” → **14598**
    - “Confirm delivery address.” → **148 NE** / **1864 N**
-   - Optional: HOS remaining / **cheapest diesel nearby** (live exchange prices along the simulated fix)
-6. **Barge-in** once mid-reply (interrupt) to show turn-taking.
-7. Optional: “Read my book” → toggle **off** → meter stops → cheap TTS path (not Voice Agent burn).
-8. Motion lock: with `?motionLock=1` (or while “moving”), free text is blocked; voice still works.
+   - Optional: HOS remaining / **cheapest diesel nearby** (live exchange along the GPS fix)
+7. **Barge-in** once mid-reply.
+8. Optional: “Read my book” → toggle **off** → meter stops → cheap TTS.
 
 ## Demo URL
 
 | Item | Value |
 |------|--------|
-| Application URL (judges) | https://tdnav.com/?demo=1 |
-| Simulated routes | https://tdnav.com/demo |
-| Base host | https://tdnav.com |
+| Application URL | https://tdnav.com |
+| Simulation (GPS + OBDLink) | https://tdnav.com/system/simulation |
 | Health | `GET https://tdnav.com/api/v1/health` |
 | GPS share (public) | https://tdnav.com/gps-share |
 
-No LAN / raw VPS IP in the public demo surface. Simulated mode is labeled and never pretends to be production telematics.
+`/demo` redirects to Simulation. No LAN / raw VPS IP in the public demo surface. Simulation is labeled and never pretends to be production telematics.
 
 ## Team notes (not required for judges)
 
