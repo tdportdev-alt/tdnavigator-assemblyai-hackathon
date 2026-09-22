@@ -3,7 +3,7 @@
 Tablet co-pilot for truck drivers. Hands-free voice under motion lock, built on the **AssemblyAI Voice Agent API**.
 
 **Live demo (judges):** https://tdnav.com/?demo=1  
-(DEMO TRUCK banner + simulated GPS / mock ELD / mock OBD — not a live fleet feed.)
+Simulated GPS/ELD/OBD (subtle status pills) — not a live fleet feed. Pick a corridor on `/demo`.
 
 **Slogan:** Ears and mouth from AssemblyAI. Brains from TDNav.
 
@@ -16,7 +16,7 @@ Drivers already juggle maps, ELD/HOS, fuel, weather, and load details on a fixed
 | Layer | Role | Stack |
 |-------|------|--------|
 | **Ears + mouth + humanizer** | Listen, turn-taking, speak natural answers | AssemblyAI **Voice Agent API** (STT + managed LLM + TTS + tools) |
-| **Brains / engine** | Facts: load, HOS, fuel, nav, preferences | TDNav app engine (tools return JSON; stubs OK for demo) |
+| **Brains / engine** | Facts: load, HOS, fuel, nav, preferences | TDNav app engine (tools return JSON; live fuel via exchange when packs empty) |
 
 AssemblyAI does **not** invent truck truth. The Voice Agent calls tools, gets engine facts, then humanizes them for the driver.
 
@@ -24,27 +24,29 @@ AssemblyAI does **not** invent truck truth. The Voice Agent calls tools, gets en
 
 ## What judges should click (≤2 min)
 
-1. Open **https://tdnav.com/?demo=1** (landscape / tablet viewport if you can). Confirm the **DEMO TRUCK** banner and connected DEMO chips (GPS / ELD / OBD).
-2. Confirm **one** orange **Navigator** hold-toggle at **top-left** (outer frame only).
-3. **Hold ~1 second** → glow / Connecting → **VOICE AGENT · LIVE** (+ on-screen $/hr meter).
-4. Ask (headset or mic):
+1. Open **https://tdnav.com/?demo=1** (landscape / tablet viewport if you can). Confirm subtle **GPS · Simulated** / **ELD · Simulated** / **OBD · Simulated** pills (no giant banner).
+2. Optional: open **Simulated routes** (`/demo`) and pick a corridor — the blue-dot follows that track.
+3. Confirm **one** orange **Navigator** hold-toggle at **top-left** (outer frame only).
+4. **Hold ~1 second** → glow / Connecting → **VOICE AGENT · LIVE** (+ on-screen $/hr meter).
+5. Ask (headset or mic):
    - “What’s my load number?” → clear digits (e.g. **14598**)
-   - “Confirm delivery address.” → smooth street enunciation (e.g. **148 NE** / **1864 N**)
-   - Optional: HOS remaining (~**4.5h** driving) / cheapest diesel nearby
-5. **Barge-in** once mid-reply (interrupt) to show turn-taking.
-6. Optional: “Read my book” → toggle **off** → meter stops → cheap TTS path (not Voice Agent burn).
-7. Motion lock: with `?motionLock=1` (or while “moving”), free text is blocked; voice still works.
+   - “Confirm delivery address.” → **148 NE** / **1864 N**
+   - Optional: HOS remaining / **cheapest diesel nearby** (live exchange prices along the simulated fix)
+6. **Barge-in** once mid-reply (interrupt) to show turn-taking.
+7. Optional: “Read my book” → toggle **off** → meter stops → cheap TTS path (not Voice Agent burn).
+8. Motion lock: with `?motionLock=1` (or while “moving”), free text is blocked; voice still works.
 
 ## Demo URL
 
 | Item | Value |
 |------|--------|
 | Application URL (judges) | https://tdnav.com/?demo=1 |
+| Simulated routes | https://tdnav.com/demo |
 | Base host | https://tdnav.com |
 | Health | `GET https://tdnav.com/api/v1/health` |
 | GPS share (public) | https://tdnav.com/gps-share |
 
-No LAN / raw VPS IP in the public demo surface. Demo mode is obvious (banner + DEMO chips) and never pretends to be production telematics.
+No LAN / raw VPS IP in the public demo surface. Simulated mode is labeled and never pretends to be production telematics.
 
 ## Team notes (not required for judges)
 
