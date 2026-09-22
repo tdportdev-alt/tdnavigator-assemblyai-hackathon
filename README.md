@@ -2,7 +2,8 @@
 
 Tablet co-pilot for truck drivers. Hands-free voice under motion lock, built on the **AssemblyAI Voice Agent API**.
 
-**Live demo (judges):** https://tdnav.com
+**Live demo (judges):** https://tdnav.com/?demo=1  
+(DEMO TRUCK banner + simulated GPS / mock ELD / mock OBD — not a live fleet feed.)
 
 **Slogan:** Ears and mouth from AssemblyAI. Brains from TDNav.
 
@@ -23,13 +24,13 @@ AssemblyAI does **not** invent truck truth. The Voice Agent calls tools, gets en
 
 ## What judges should click (≤2 min)
 
-1. Open **https://tdnav.com** (landscape / tablet viewport if you can).
+1. Open **https://tdnav.com/?demo=1** (landscape / tablet viewport if you can). Confirm the **DEMO TRUCK** banner and connected DEMO chips (GPS / ELD / OBD).
 2. Confirm **one** orange **Navigator** hold-toggle at **top-left** (outer frame only).
 3. **Hold ~1 second** → glow / Connecting → **VOICE AGENT · LIVE** (+ on-screen $/hr meter).
 4. Ask (headset or mic):
    - “What’s my load number?” → clear digits (e.g. **14598**)
    - “Confirm delivery address.” → smooth street enunciation (e.g. **148 NE** / **1864 N**)
-   - Optional: HOS remaining / cheapest diesel nearby
+   - Optional: HOS remaining (~**4.5h** driving) / cheapest diesel nearby
 5. **Barge-in** once mid-reply (interrupt) to show turn-taking.
 6. Optional: “Read my book” → toggle **off** → meter stops → cheap TTS path (not Voice Agent burn).
 7. Motion lock: with `?motionLock=1` (or while “moving”), free text is blocked; voice still works.
@@ -38,11 +39,12 @@ AssemblyAI does **not** invent truck truth. The Voice Agent calls tools, gets en
 
 | Item | Value |
 |------|--------|
-| Application URL | https://tdnav.com |
+| Application URL (judges) | https://tdnav.com/?demo=1 |
+| Base host | https://tdnav.com |
 | Health | `GET https://tdnav.com/api/v1/health` |
 | GPS share (public) | https://tdnav.com/gps-share |
 
-No LAN / raw VPS IP in the public demo surface.
+No LAN / raw VPS IP in the public demo surface. Demo mode is obvious (banner + DEMO chips) and never pretends to be production telematics.
 
 ## Team notes (not required for judges)
 
