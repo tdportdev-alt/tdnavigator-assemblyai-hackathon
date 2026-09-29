@@ -1,0 +1,23 @@
+{
+  "name": "tdnavigator-assemblyai-hackathon",
+  "version": "0.1.0",
+  "description": "TDNavigator voice layer: a hands-free AssemblyAI Voice Agent co-pilot for truck drivers (contest slice, MIT).",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.4.0",
+    "vitest": "^2.1.0"
+  }
+}
